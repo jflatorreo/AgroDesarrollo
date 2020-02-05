@@ -8,3 +8,10 @@ class Member(models.Model):
 
     def __str__(self):
         return self.firstname + " " + self.lastname
+
+class Semoviente(models.Model):
+    chapeta = models.CharField(max_length=40)
+    fecha_ingreso = models.CharField(max_length=40)
+
+    def __str__(self):
+        return self.chapeta + " " + self.fecha_ingreso

@@ -3,10 +3,10 @@
 <form class="form-inline"  action="create" method="POST">
     {% csrf_token %}
     <div class="form-group">
-        <label for="firstname">Chapeta</label>
-        <input type="text" name="firstname" class="form-control" style="width:30%;" required="required"/>
-        <label for="lastname">Fecha de ingreso</label>
-        <input type="text" name="lastname" class="form-control" style="width:30%;" required="required"/>
+        <label for="chapeta">Chapeta</label>
+        <input type="text" name="chapeta" class="form-control" style="width:30%;" required="required"/>
+        <label for="fecha_ingreso">Fecha de ingreso</label>
+        <input type="text" name="fecha_ingreso" class="form-control" style="width:30%;" required="required"/>
         <button type="submit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus"></span> Agregar</button>
     </div>
 </form>
@@ -20,16 +20,16 @@
         </tr>
     </thead>
     <tbody>
-        {% for member in members %}
+        {% for semoviente in semovientes %}
         <tr>
-            <td>{{ member.firstname }}</td>
-            <td>{{ member.lastname }}</td>
-            <td><center><a class="btn btn-sm btn-warning" href="edit/{{ member.id }}"><span class="glyphicon glyphicon-edit"></span> Editar</a> <a class="btn btn-sm btn-danger" href="delete/{{ member.id }}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a></center></td>
+            <td>{{ semoviente.chapeta }}</td>
+            <td>{{ semoviente.fecha_ingreso }}</td>
+            <td><center><a class="btn btn-sm btn-warning" href="edit/{{ semoviente.id }}"><span class="glyphicon glyphicon-edit"></span> Editar</a> <a class="btn btn-sm btn-danger" href="delete/{{ semoviente.id }}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a></center></td>
         </tr>
         {% endfor %}
         <tr>
         <td colspan="2">Total</td>
-        <td>{{members.count}}</td>
+        <td>{{semovientes.count}}</td>
         </tr>
     </tbody>
 </table>

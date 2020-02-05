@@ -1,31 +1,31 @@
 from django.shortcuts import render, redirect
-from .models import Member
+from .models import Semoviente
 
 # Create your views here.
 
 def index(request):
-    members = Member.objects.all()
-    context = {'members': members}
+    semovientes = Semoviente.objects.all()
+    context = {'semovientes': semovientes}
     return render(request, 'crud/index.html', context)
 
 def create(request):
-    member = Member(firstname=request.POST['firstname'], lastname=request.POST['lastname'])
-    member.save()
+    semoviente = Semoviente(chapeta=request.POST['chapeta'], fecha_ingreso=request.POST['fecha_ingreso'])
+    semoviente.save()
     return redirect('/')
 
 def edit(request, id):
-    members = Member.objects.get(id=id)
-    context = {'members': members}
+    semovientes = Semoviente.objects.get(id=id)
+    context = {'semovientes': semovientes}
     return render(request, 'crud/edit.html', context)
 
 def update(request, id):
-    member = Member.objects.get(id=id)
-    member.firstname = request.POST['firstname']
-    member.lastname = request.POST['lastname']
-    member.save()
+    semoviente = Semoviente.objects.get(id=id)
+    semoviente.chapeta = request.POST['chapeta']
+    semoviente.fecha_ingreso = request.POST['fecha_ingreso']
+    semoviente.save()
     return redirect('/crud/')
 
 def delete(request, id):
-    member = Member.objects.get(id=id)
-    member.delete()
+    semoviente = Semoviente.objects.get(id=id)
+    semoviente.delete()
     return redirect('/crud/')
